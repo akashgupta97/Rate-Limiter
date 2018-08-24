@@ -34,3 +34,29 @@ except:
     pass
 start = time.clock()
 #############start program###############################
+a = str(os.getcwd())
+try:
+    os.mkdir(a + "\\usernamesJson")
+except:
+    pass
+try:
+    os.mkdir(a + "\\repos")
+except:
+    pass
+try:
+    os.mkdir(a + "\\nocdata\\")
+except:
+    pass
+inp = 'input.csv'
+api_saturation_message_length = 137
+fields = []
+rows = []
+csvfile = open(inp, 'r')
+csvreader = csv.reader(csvfile)
+fields = next(csvreader)
+FirstName = []
+LastName = []
+Location = []
+loca = []
+url_missed_out_noc = []
+url_missed_out_rdata = []
