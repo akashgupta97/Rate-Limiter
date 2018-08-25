@@ -60,3 +60,24 @@ Location = []
 loca = []
 url_missed_out_noc = []
 url_missed_out_rdata = []
+while (True):
+    try:
+        row = next(csvreader)
+        if row[0] != None:
+            FirstName.append(row[0])
+        else:
+            FirstName.append(None)
+        if row[1] != None:
+            LastName.append(row[1])
+        else:
+            LastName.append(None)
+        if row[2] != None:
+            Location.append(row[2])
+            if row[2] == "":
+                loca.append("World")
+            else:
+                loca.append(row[2].replace(' ', '').replace(',', '-'))
+        else:
+            Location.append(None)
+    except:
+        break
