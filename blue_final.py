@@ -81,3 +81,20 @@ while (True):
             Location.append(None)
     except:
         break
+csvfile.close()
+mystring = []
+mystring = blue_lib.getName_location(FirstName, LastName, Location)
+usernames_urls = blue_lib.username_query_generator(mystring)
+# has all the urls, hit legacy
+print("program might sleep to prevent readwrite buffer bottlenecks")
+if len(usernames_urls) < 4990:
+    blue_lib.legacy_search(usernames_urls, FirstName, LastName, loca)
+    time.sleep(t)
+    blue_lib.SaturationHandler()
+elif len(usernames_urls) < 9980 and len(usernames_urls) >= 4990:
+    blue_lib.legacy_search(usernames_urls[0:4990], FirstName, LastName, loca)
+    time.sleep(t)
+    blue_lib.SaturationHandler()
+    blue_lib.legacy_search(usernames_urls[4991:9980], FirstName, LastName, loca)
+    time.sleep(t)
+    blue_lib.SaturationHandler()
