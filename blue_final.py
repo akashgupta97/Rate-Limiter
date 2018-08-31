@@ -119,3 +119,16 @@ else:
     time.sleep(t)
     blue_lib.SaturationHandler()
     print(
+        "please split your csv file into two or more files,run them separately, this program is limited to the scope of at max, 14670 devs.")
+    print("the first 14790 devs are being handled.")
+print("usernames written")
+time.sleep(t / 2)
+# tester for token before we start off
+token_sub_url = "https://api.github.com/rate_limit"
+token_url = token_sub_url + blue_lib.token_choice()
+jdata = urllib.request.urlopen(token_url, context=ctx)
+jdat = jdata.read().decode()
+jda = json.loads(jdat)
+remaining = jda["rate"]["remaining"]
+remains = remaining / 100
+
