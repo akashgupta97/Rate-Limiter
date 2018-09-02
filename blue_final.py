@@ -132,3 +132,25 @@ jda = json.loads(jdat)
 remaining = jda["rate"]["remaining"]
 remains = remaining / 100
 
+# all usernames in folder usernamesJson, checking for discrepancies
+miss_list = []  # devs we couldnt find because invalid search cases
+problem_file = open('issues.txt', 'a')
+problem_file.write("Search issues \n")
+discrepancy = len(os.listdir(a + '\\usernamesJson\\')) - len(usernames_urls)
+if discrepancy == 0:
+    pass
+elif discrepancy > 0:
+    time.sleep(t / 2)
+    discrepancy2 = len(os.listdir(a + '\\usernamesJson\\')) - len(usernames_urls)
+    if (discrepancy2 < discrepancy):
+        if (discrepancy2 == 0):
+            pass
+        else:
+            time.sleep(t)
+    elif (discrepancy2 == discrepancy and discrepancy2 > 0):
+        miss_list = blue_lib.search_missing_devs(FirstName, LastName, loca)
+        for i in miss_list:
+            problem_file.write(i)
+            problem_file.write("\n")
+problem_file.flush()
+problem_file.close()
