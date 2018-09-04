@@ -154,3 +154,86 @@ elif discrepancy > 0:
             problem_file.write("\n")
 problem_file.flush()
 problem_file.close()
+#################################json for all usernames is here##################
+for file in os.listdir(a + '\\usernamesJson\\'):
+    blue_lib.unametoJSON(file)
+##################private data for all usernames is here######
+##############now in batches of at max 100 usernames, we extract repos########################
+problem_file = open('issurep.txt', 'a')
+problem_file.write("repo issues \n")
+errors = []
+count = 0
+rep_url_file = open('rep_list.txt', 'a')
+with open('pdata.txt', 'r') as pdat:
+    while (True):
+        line = pdat.readline()
+        count = count + 1
+        if line == "":
+            break
+        lin = line.split('###')
+        username = lin[0]
+        size = lin[1]
+        name = lin[2].split('_')
+        fname = name[0]
+        lname = name[1]
+        ltion = name[2]
+        blue_lib.unameToRepos(fname, lname, ltion, username, size)
+        count = count + 1
+        if count >= 100:
+            remains = remains - 1
+            if remains < 3:
+                remains = blue_lib.SaturationHandler()
+            count = 0
+            time.sleep(15)
+            file_names = os.listdir(a + '\\repos\\')
+            for file in file_names:
+                list_of_reps, err = blue_lib.json2repos(file)
+                if len(err) != 0:
+                    for j in err:
+                        errors.append(j)
+                for i in list_of_reps:
+                    fil = file.split('_')[3]
+                    fstring = 'count' + file[:-4] + '#l#' + i + '.txt'
+                    po_url = '"' + 'https://api.github.com/repos/' + fil[
+                                                                     :-5] + '/' + i + '/contributors' + blue_lib.token_choice() + '"'
+                    command_string = 'start /B curl -s ' + po_url + ' >> ' + 'nocdata\\' + fstring
+                    rep_url_file.write(command_string)
+                    rep_url_file.write("\n")
+            if (len(err)) == 0:
+                os.remove(a + '\\repos\\' + file)
+time.sleep(t)
+file_names = os.listdir(a + '\\repos\\')
+for file in file_names:
+    list_of_reps, err = blue_lib.json2repos(file)
+    if len(err) != 0:
+        for j in err:
+            errors.append(j)
+    for i in list_of_reps:
+        fil = file.split('_')[3]
+        fstring = 'count' + file[:-5] + '#l#' + i + '.txt'
+        po_url = '"' + 'https://api.github.com/repos/' + fil[
+                                                         :-5] + '/' + i + '/contributors' + blue_lib.token_choice() + '"'
+        command_string = 'start /B curl -s ' + po_url + ' >> ' + 'nocdata\\' + fstring
+        rep_url_file.write(command_string)
+        rep_url_file.write("\n")
+    if (len(err)) == 0:
+        os.remove(a + '\\repos\\' + file)
+rep_url_file.flush()
+rep_url_file.close()
+for i in errors:
+    problem_file.write(i)
+    problem_file.write("\n")
+problem_file.flush()
+problem_file.close()
+
+#################repos is empty and no.of.commits links are ready#################
+###############number of commits########################
+
+
+ct = 0
+out_file = open('outp.txt', 'a')
+problem_file = open('issunoc.txt', 'a')
+problem_file.write("noc issues \n")
+problem_file.flush()
+problem_file.close()
+errornoc = []
