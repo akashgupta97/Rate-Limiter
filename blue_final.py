@@ -268,3 +268,22 @@ with open('rep_list.txt', 'r') as nocurls:
                 out_file.write("\n")
                 os.remove(a + '\\nocdata\\' + file)
 
+ct = 0
+file_name = os.listdir(a + '\\nocdata\\')
+for file in file_name:
+    fil = file.split('#l#')
+    rep_name = fil[1][:-4]
+    name = fil[0].split('_')
+    fname = name[0]
+    lname = name[1]
+    ltion = name[2]
+    login = name[3]
+    contri = blue_lib.json2commits(file, login)
+    #    if len(errn) != 0:
+    #        for j in errn:
+    #            errornoc.append(j)
+    #        break
+    strin = fname[5:] + "," + lname + "," + ltion + "," + login + "," + rep_name + "," + str(contri)
+    out_file.write(strin)
+    out_file.write("\n")
+    # os.remove(a + '\\nocdata\\' + file)
