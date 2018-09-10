@@ -287,3 +287,11 @@ for file in file_name:
     out_file.write(strin)
     out_file.write("\n")
     # os.remove(a + '\\nocdata\\' + file)
+
+out_file.flush()
+out_file.close()
+blue_lib.issues_handle()
+print(time.clock() - start)
+print("annnnnnnnd done!, dasvidania!")
+os.system('py csvconv.py')
+blue_lib.clean_slate_protocol()
