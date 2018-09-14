@@ -36,3 +36,17 @@ def SaturationHandler():
     time1 = tjs1["rate"]["reset"]
     time2 = tjs2["rate"]["reset"]
     time3 = tjs3["rate"]["reset"]
+    if (remaining1 <= 110 and remaining2 <= 110 and remaining3 <= 110):
+        tn = time.time()
+        sleep_time = min(time1 - tn, time2 - tn, time3 - tn)
+        print(
+            "Our tokens have reached a temporary saturation of allowed requests, sleeping till more requests are allowed")
+        print("we have to stop requesting for ", sleep_time, " seconds to resume")
+        time.sleep(sleep_time)
+    elif (x == 1):
+        if (remaining2 >= remaining3):
+            x = 2
+            return remaining2 / 100
+        else:
+            x = 3
+            return remaining3 / 100
