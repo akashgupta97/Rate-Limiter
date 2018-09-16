@@ -50,3 +50,20 @@ def SaturationHandler():
         else:
             x = 3
             return remaining3 / 100
+    elif (x == 2):
+        if (remaining1 >= remaining3):
+            x = 1
+            return remaining1 / 100
+        else:
+            x = 3
+            return remaining3 / 100
+    else:
+        if (remaining1 >= remaining2):
+            x = 1
+            return remaining1 / 100
+        else:
+            x = 2
+            return remaining2 / 100
+    print("token has been changed to", x)
+
+
