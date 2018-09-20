@@ -67,3 +67,17 @@ def SaturationHandler():
     print("token has been changed to", x)
 
 
+def token_choice():
+    token1 = "?access_token=3414d03eae8c6269c5ed05de563d22019087eda3"
+    token2 = "?access_token=1aa60130f9d7d215846b32b0dcdbca82372488c4"
+    token3 = "?access_token=478830ab3761e8824f7f454bec92b19958308038"
+    if (x == 1):
+        token = token1
+    elif (x == 2):
+        token = token2
+    else:
+        token = token3
+
+    return token
+
+
