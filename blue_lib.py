@@ -81,3 +81,29 @@ def token_choice():
     return token
 
 
+def leftout_handler(leftoutnames, count):
+    deadly = []
+    for file in deadly:
+        fi = open('repos_list.txt', 'a')
+        with open(os.getcwd() + '\\repos\\' + file, 'r', errors='ignore') as fil:
+            k = fil.read()
+            try:
+                jsdata = json.loads(k)
+            except:
+                deadly.append(file)
+                time.sleep(5)
+                continue
+            for i in jsdata:
+                wstr = i["name"]
+                wrstr = file[1:-4] + ' ' + wstr
+                fi.write(wrstr)
+                deadly.remove(file)
+                fi.write("\n")
+        fi.flush()
+        fi.close()
+        if len(deadly) != 0 and count < 5:
+            print(deadly)
+            leftout_handler(deadly, count + 1)
+        return deadly
+
+
