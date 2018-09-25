@@ -107,3 +107,33 @@ def leftout_handler(leftoutnames, count):
         return deadly
 
 
+def getString(name, Location):
+    mystring = []
+    for i in range(0, len(name)):
+        if Location[i] != 'location:':
+            mystring.append(name[i] + "%20" + Location[i])
+        else:
+            mystring.append(name[i])
+    return mystring
+
+
+def getName_location(FirstName, LastName, Location):
+    name = []
+    for i in range(0, len(FirstName)):
+        name.append(FirstName[i].lower() + "%20" + LastName[i].lower())
+        Location[i] = Location[i].replace(", ", ",")
+        dict1 = dict({'location': Location[i]})
+        parms = urllib.parse.urlencode(dict1)
+        parms = parms.replace('=', ':')
+        Location[i] = parms
+        Location[i] = Location[i].replace("+", "%2B")
+    return getString(name, Location)
+
+
+def username_query_generator(mystring):
+    serviceurl = []
+    for i in range(0, len(mystring)):
+        serviceurl.append("https://api.github.com/legacy/user/search/fullname:" + mystring[i] + token_choice())
+    return serviceurl
+
+
