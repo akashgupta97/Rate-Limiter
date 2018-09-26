@@ -137,3 +137,11 @@ def username_query_generator(mystring):
     return serviceurl
 
 
+def legacy_search(usernames_urls, FirstName, LastName, loca):
+    a = os.getcwd()
+    for i in range(0, len(usernames_urls)):
+        legacy_command_string = 'start /B curl -s ' + usernames_urls[i] + ' > ' + a + '/usernamesJson/' + str(
+            FirstName[i] + "_" + LastName[i] + "_" + str(loca[i])) + '.txt'
+        os.system(legacy_command_string)
+    print("writing usernames")
+
