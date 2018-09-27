@@ -145,3 +145,17 @@ def legacy_search(usernames_urls, FirstName, LastName, loca):
         os.system(legacy_command_string)
     print("writing usernames")
 
+
+def search_missing_devs(FirstName, LastName, loca):
+    a = str(os.getcwd())
+    b = []
+    for file in os.listdir(a + '/usernamesJson/'):
+        fil = file.split('_')
+        FirstName.remove(fil[0])
+        LastName.remove(fil[1])
+        loca.remove(fil[2])
+    for i in range(0, len(FirstName)):
+        b[i] = FirstName[i] + '_' + LastName[i] + '_' + loca[i]
+    return b
+
+
