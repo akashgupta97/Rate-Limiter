@@ -159,3 +159,23 @@ def search_missing_devs(FirstName, LastName, loca):
     return b
 
 
+# name is kept opposite on purpose, actually does json to unames
+def unametoJSON(
+        filename):  # function converts the obtained data to just username and number ofrepos separated by ###, for split function
+
+    with open(os.getcwd() + "\\usernamesJson\\" + filename, 'r') as json_file:
+        json_data = json_file.read()
+        jsd = json.loads(json_data)
+        with open('pdata.txt', 'a') as tuname:
+            for data in jsd["users"]:
+                lin = str(data["login"]) + "###" + str(data["public_repo_count"]) + "###" + str(filename)[
+                                                                                            :-4] + "###" + str(
+                    data["score"]) + "###" + str(data["id"]) + "###" + str(
+                    data["created_at"])  # extract more data["x"] x = id,language,followers,created_at,location again
+                tuname.write(lin)
+                tuname.write("\n")
+            tuname.flush()
+        tuname.close()
+    json_file.close()
+
+
