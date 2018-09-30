@@ -160,8 +160,7 @@ def search_missing_devs(FirstName, LastName, loca):
 
 
 # name is kept opposite on purpose, actually does json to unames
-def unametoJSON(
-        filename):  # function converts the obtained data to just username and number ofrepos separated by ###, for split function
+def unametoJSON(filename):  # function converts the obtained data to just username and number ofrepos separated by ###, for split function
 
     with open(os.getcwd() + "\\usernamesJson\\" + filename, 'r') as json_file:
         json_data = json_file.read()
@@ -177,5 +176,4 @@ def unametoJSON(
             tuname.flush()
         tuname.close()
     json_file.close()
-
 
