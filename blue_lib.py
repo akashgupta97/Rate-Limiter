@@ -177,3 +177,21 @@ def unametoJSON(filename):  # function converts the obtained data to just userna
         tuname.close()
     json_file.close()
 
+
+def json2repos(filename):
+    a = []
+    errorfiles = []
+    try:
+        with open(os.getcwd() + '\\repos\\' + filename, 'r', errors="ignore") as fil:
+            data = fil.read()
+            if len(data) > 120 and len(data) < 150:
+                SaturationHandler()
+            a = []
+            dat = json.loads(data)
+            for da in dat:
+                a.append(da["name"])
+    except:
+        errorfiles.append(filename)
+    return a, errorfiles
+
+
