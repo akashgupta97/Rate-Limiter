@@ -14,9 +14,9 @@ x = 1
 
 def SaturationHandler():
     global x
-    token1 = "?access_token=3414d03eae8c6269c5ed05de563d22019087eda3"
-    token2 = "?access_token=1aa60130f9d7d215846b32b0dcdbca82372488c4"
-    token3 = "?access_token=478830ab3761e8824f7f454bec92b19958308038"
+    token1 = "?access_token=...."     #Access token not displayed for confidentiality matters .Generate your own access token by Outh2 Authentication
+    token2 = "?access_token=...."     #Access token not displayed for confidentiality matters .Generate your own access token by Outh2 Authentication
+    token3 = "?access_token=...."     #Access token not displayed for confidentiality matters .Generate your own access token by Outh2 Authentication
     token_sub_url = "https://api.github.com/rate_limit"
     token1_url = token_sub_url + token1
     token2_url = token_sub_url + token2
@@ -68,9 +68,9 @@ def SaturationHandler():
 
 
 def token_choice():
-    token1 = "?access_token=3414d03eae8c6269c5ed05de563d22019087eda3"
-    token2 = "?access_token=1aa60130f9d7d215846b32b0dcdbca82372488c4"
-    token3 = "?access_token=478830ab3761e8824f7f454bec92b19958308038"
+    token1 = "?access_token=...."  # Access token not displayed for confidentiality matters .Generate your own access token by Outh2 Authentication
+    token2 = "?access_token=...."  # Access token not displayed for confidentiality matters .Generate your own access token by Outh2 Authentication
+    token3 = "?access_token=...."  # Access token not displayed for confidentiality matters .Generate your own access token by Outh2 Authentication
     if (x == 1):
         token = token1
     elif (x == 2):
