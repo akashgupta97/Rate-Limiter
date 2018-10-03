@@ -195,3 +195,41 @@ def json2repos(filename):
     return a, errorfiles
 
 
+def json2commits(filename, uname):
+    a = 0
+    with open(os.getcwd() + '\\nocdata\\' + filename, 'r') as fil:
+        data = fil.read()
+    try:
+        if data == "":
+            return a
+        elif data == []:
+            return a
+        else:
+            dat = json.loads(data)
+            for da in dat:
+                if uname == da["login"]:
+                    a = da["contributions"]
+    except:
+        try:
+            time.sleep(5)
+            with open(os.getcwd() + '\\nocdata\\' + filename, 'r') as fil:
+                data = fil.read()
+                if data == "":
+                    return a
+                elif data == []:
+                    return a
+                else:
+                    dat = json.loads(data)
+                    for da in dat:
+                        if uname == da["login"]:
+                            a = da["contributions"]
+
+        except:
+            file = open('issues.txt', 'a')
+            file.write(filename)
+            file.write("\n")
+            file.flush()
+            file.close()
+    return a
+
+
