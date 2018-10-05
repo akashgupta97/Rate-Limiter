@@ -233,3 +233,22 @@ def json2commits(filename, uname):
     return a
 
 
+def json2commits2(filename, uname):
+    a = 0
+    try:
+        with open(os.getcwd() + '\\nocdata\\' + filename, 'r') as fil:
+            data = fil.read()
+            if data == "":
+                return a
+            elif data == []:
+                return a
+            else:
+                dat = json.loads(data)
+                for da in dat:
+                    if uname == da["login"]:
+                        a = da["contributions"]
+    except:
+        pass
+    return a
+
+
