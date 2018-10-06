@@ -252,3 +252,23 @@ def json2commits2(filename, uname):
     return a
 
 
+def unameToRepos(fname, lname, ltion, username, size):
+    a = os.getcwd()
+    hundred = 100
+    i = 0
+    total = int(size)
+    if total > 100:
+        while total > 0:
+            i = i + 1
+            fstring = fname + '_' + lname + '_' + ltion + '_' + username + str(i) + '.txt'
+            repo_url = '"' + 'https://api.github.com/users/' + username + '/repos?page=' + str(i) + '&per_page=' + str(
+                min(hundred, total)) + '&' + token_choice()[1:] + '"'
+            command_string = 'start /B curl -s ' + repo_url + '>>' + a + '\\repos\\' + fstring
+            os.system(command_string)
+            total = total - 100
+    elif total <= 100:
+        fstring = fname + '_' + lname + '_' + ltion + '_' + username + str(i) + '.txt'
+        repo_url = '"' + 'https://api.github.com/users/' + username + '/repos?per_page=100&' + token_choice()[1:] + '"'
+        command_string = 'start /B curl -s ' + repo_url + '>>' + a + '\\repos\\' + fstring
+        os.system(command_string)
+
