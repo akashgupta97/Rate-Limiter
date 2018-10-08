@@ -44,3 +44,33 @@ FileName1.close()
 
 
 
+Temp_List3 = []
+for loc1 in range(0,len(Main_List)):
+    FileStr = os.getcwd() + "\\pdata.txt"
+    FileName2=open(FileStr,'r')
+    for line in FileName2:
+        Temp_List3=line.split("###")
+        if(Temp_List3[0]==Main_List[loc1][3]):
+            Main_List[loc1].append(Temp_List3[1])
+            Main_List[loc1].append(Temp_List3[3])
+            Temp_List3[4]=Temp_List3[4]
+            Temp_List3[5]=Temp_List3[5].rstrip("\n")
+            Main_List[loc1].append(Temp_List3[4])
+            Main_List[loc1].append(Temp_List3[5])
+FileName2.close()
+#Creating a list of developers with zero repositories on GitHub
+
+print(Main_List)
+
+Zero_List=[]
+FileStr = os.getcwd() +  "\\pdata.txt"
+FileName2 = open(FileStr, 'r')
+for line in FileName2:
+    Temp_List3 = line.split("###")
+
+    if(Temp_List3[1]=='0'):
+        Temp_List3[5]=Temp_List3[5].rstrip("\n")
+        Temp_List4=Temp_List3[2].split("_")
+        Zero_List.append(Temp_List4[0:3] + Temp_List3[0:2] + Temp_List3[3:6])
+FileName2.close()
+
