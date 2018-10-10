@@ -273,3 +273,25 @@ def unameToRepos(fname, lname, ltion, username, size):
         os.system(command_string)
 
 
+def issues_handle():
+    issu = open(os.getcwd() + '\\issuesusername.txt', 'a')
+    issu.flush()
+    issu.close()
+    print("handling the missed out user data")
+    issu = open(os.getcwd() + '\\issues.txt', 'r')
+    a = issu.readline()
+    count = 0
+    while (True):
+        b = issu.readline()
+        if b == "":
+            print(count, a, "were present")
+            break
+        else:
+            count = count + 1
+            print("will have to manually look into", b)
+    a = issu.readline()
+
+    print("handling the missed out reps")
+    issu = open(os.getcwd() + '\\issurep.txt', 'r')
+    issw = open(os.getcwd() + '\\issunoc.txt', 'a')
+    a = issu.readline()
