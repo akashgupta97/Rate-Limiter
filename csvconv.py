@@ -74,3 +74,24 @@ for line in FileName2:
         Zero_List.append(Temp_List4[0:3] + Temp_List3[0:2] + Temp_List3[3:6])
 FileName2.close()
 
+#Creating and writing CSV FILE "FinalResults.csv"
+
+Fields = ['FIRSTNAME', 'LASTNAME', 'LOCATION','USERNAME','NUMBER_OF_REPOS','SCORE','USER_ID','CREATED_AT']
+Fields1= ['NAME_OF_REPOS' , 'NUMBER_OF_COMMITS']
+Last = ['TOTAL LIST OF DEVELOPERS WHICH DO NOT HAVE ANY REPOSITORIES-------------------------------------------------']
+with open("FinalResult.csv",'w',newline ='') as CsvFile:
+    CsvWriter = csv.writer(CsvFile)
+    for loc3 in Main_List:
+        CsvWriter.writerow(Fields)
+        CsvWriter.writerow(loc3[0:4] + loc3[5:9])
+        CsvWriter.writerow(Fields1)
+        for d in loc3[4]:
+            CsvWriter.writerow(d)
+    #Writing List of Developers at the end which have zero repositories
+
+    CsvWriter.writerow(Last)
+    CsvWriter.writerow(Fields)
+    for z in Zero_List:
+        CsvWriter.writerow(z)
+
+#Printing the final list :- Main_List
