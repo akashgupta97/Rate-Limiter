@@ -295,3 +295,23 @@ def issues_handle():
     issu = open(os.getcwd() + '\\issurep.txt', 'r')
     issw = open(os.getcwd() + '\\issunoc.txt', 'a')
     a = issu.readline()
+    while (True):
+        b = issu.readline()
+        if b.rstrip() == "":
+            break
+        else:
+            try:
+                username = b.split('_')[-1][:-4]
+                file = open(os.getcwd() + '\\repos\\' + b.rstrip(), 'r', errors="ignore")
+                data = file.read()
+                jsondata = json.loads(data)
+                for values in jsondata:
+                    rep_name = values["name"]
+                    issw.write('count' + b[:-5] + '#l#' + rep_name + '.txt')
+                    issw.write("\n")
+                    os.system(
+                        'start /B curl -s "https://api.github.com/repos/' + username + '/' + rep_name + '/contributors' + token_choice() + '" >>nocdata\count' + b[
+                                                                                                                                                                 :-5] + '#l#' + rep_name + '.txt.')
+                time.sleep(20)
+            except:
+                pass
