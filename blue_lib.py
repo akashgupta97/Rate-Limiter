@@ -315,3 +315,41 @@ def issues_handle():
                 time.sleep(20)
             except:
                 pass
+    issw.flush()
+    issw.close()
+    issu = open(os.getcwd() + '\\issunoc.txt', 'a')
+    issu.flush()
+    issu.close()
+    print("handling the missed out data")
+
+    issu = open(os.getcwd() + '\\issunoc.txt', 'r')
+    a = issu.readline()
+    while (True):
+        b = issu.readline()
+        if b.rstrip() == "":
+            break
+        else:
+            pass
+            try:
+                b = b.rstrip()
+                totname = b.split('#l#')
+                name = totname[0].split('_')
+                rep_name = totname[1][:-4]
+                username = name[3]
+                if username[-1] == "0" or username[-1] == "1" or username[-1] == "2":
+                    username = username[:-1]
+                fname = name[0][5:]
+                lname = name[1]
+                loca = name[2]
+                noc = json2commits2(b, username)
+                output = open('outp.txt', 'a')
+                strin = fname + "," + lname + "," + loca + "," + username + "," + rep_name + "," + str(noc)
+                output.write(strin)
+                output.write("\n")
+                output.flush()
+                output.close()
+            except:
+                print("Failure when looked into ", b)
+    issu.close()
+
+
