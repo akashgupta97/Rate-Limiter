@@ -353,3 +353,21 @@ def issues_handle():
     issu.close()
 
 
+def clean_slate_protocol():
+    try:
+        for file in os.listdir(os.getcwd() + '\\usernamesJson\\'):
+            os.remove(os.getcwd() + '\\usernamesJson\\' + file)
+        os.rmdir(os.getcwd() + '\\usernamesJson')
+        for file in os.listdir(os.getcwd() + '\\nocdata\\'):
+            os.remove(os.getcwd() + '\\nocdata\\' + file)
+        os.rmdir(os.getcwd() + '\\nocdata')
+        for file in os.listdir(os.getcwd() + '\\repos\\'):
+            os.remove(os.getcwd() + '\\repos\\' + file)
+        os.rmdir(os.getcwd() + '\\nocdata')
+        os.remove('rep_list.txt')
+        os.remove('issues.txt')
+        os.remove('issunoc.txt')
+        os.remove('issurep.txt')
+        os.remove('issuesusername.txt')
+    except:
+        pass
