@@ -79,3 +79,5 @@ Caution:
 2 - Do not delete speed_factor.txt!
 3 - Very slow internet speed can lead to program crash (less than 300kbps)
 4 - The path to the blue_final.py file should not have any spaces in it. e.g. a folder name like "blue optima" will cause failure in command execution, kindly rename it to "blue_optima" for the meanwhile
+5 - Generate your own access token by Outh2 Authentication. 
+    Link:-https://developer.github.com/v3/
